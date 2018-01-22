@@ -1,0 +1,6 @@
+<div>
+    <p>Last Updated on {{ updDate | date }} at {{ updDate | date:'mediumTime' }}</p>
+    <ul *ngFor="let r of datass" >
+        <li>{{ r.name }} = {{ r.price_usd }}</li>
+    </ul>    
+</div>
