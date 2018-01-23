@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Time } from '@angular/common';
 
 import { GetrateService } from './getrate.service';
 import { ExchangeRate } from './excrate';
@@ -10,11 +9,10 @@ import { ExchangeRate } from './excrate';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private datass: ExchangeRate[];
+  private cryptoData: ExchangeRate[];
   rates: string[];
   interval: any;
   names: string[];
-  excRate: [string,string];
   updDate = new Date();
 
 
@@ -31,18 +29,18 @@ export class AppComponent implements OnInit {
   refreshData() {
     this.getRate.getCurrencyRate()
                          .subscribe(
-                          data => this.datass = data,
-                          err => console.log('Bad!!!'),
-//                          () => console.log(this.datass)                         
+                          data => this.cryptoData = data,
+                          err => console.log('Unable to fetch CryptoCurreny Data!!!'),
+//                          () => console.log(this.cryptoData)                         
                         );
   }
 
   printRates() {
       this.rates = [];
       this.names = [];
-      for(let a in this.datass) {
-        this.rates[a] = this.datass[a].price_usd;
-        this.names[a] = this.datass[a].name;
+      for(let a in this.cryptoData) {
+        this.rates[a] = this.cryptoData[a].price_usd;
+        this.names[a] = this.cryptoData[a].name;
       }
     }
 }

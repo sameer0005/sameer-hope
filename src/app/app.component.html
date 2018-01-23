@@ -1,6 +1,16 @@
-<div>
-    <p>Last Updated on {{ updDate | date }} at {{ updDate | date:'mediumTime' }}</p>
-    <ul *ngFor="let r of datass" >
-        <li>{{ r.name }} = {{ r.price_usd }}</li>
-    </ul>    
+<div id="resp-table">
+    <table>
+        <caption>CryptoCurrency Latest Share Price</caption>
+        <tr>
+            <th>CryptoCurrency</th>
+            <th>ShareValue</th>
+        </tr>
+        <ul *ngFor="let r of cryptoData">
+            <tr>
+                <td>{{r.name}}</td>
+                <td>{{r.price_usd}}</td>
+            </tr>
+        </ul>        
+        <tfoot>*Last Updated on {{ updDate | date }} at {{ updDate | date:'mediumTime' }}</tfoot>    
+    </table> 
 </div>
